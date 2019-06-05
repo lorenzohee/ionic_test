@@ -12,13 +12,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { SharedModule } from './shared';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
 	  BrowserModule,
-	  IonicModule.forRoot(),
+    IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
 	  AppRoutingModule,
 	  HttpClientModule,
 	  SharedModule],

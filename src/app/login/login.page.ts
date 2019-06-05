@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, MenuController, ToastController, AlertController, LoadingController } from '@ionic/angular';
+import { UserService } from '../service/user.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,9 @@ export class LoginPage implements OnInit {
     public toastCtrl: ToastController,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private storage: Storage,
+    private userService: UserService
   ) { }
 
   ionViewWillEnter() {
@@ -87,6 +91,21 @@ export class LoginPage implements OnInit {
   }
 
   goToHome() {
-    this.navCtrl.navigateRoot('/home-results');
+    this.userService.login(this.onLoginForm.value).subscribe(
+      result => {
+        if(result.token){
+          this.setToken(result.token)
+          this.navCtrl.navigateRoot('/home');
+        }
+      }
+    )
+  }
+
+  setToken(token: string): Promise<any>{
+    return this.storage.set('token', token)
+  }
+
+  getToken(): Promise<string> {
+    return this.storage.get('token')
   }
 }

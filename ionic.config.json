@@ -1,5 +1,7 @@
 {
   "name": "ionic-agent",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
