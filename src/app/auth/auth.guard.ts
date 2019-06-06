@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivate, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Storage } from '@ionic/storage';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivate, Router, CanLoad, Route } from '@angular/router';
+import { StorageService } from '../service/storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,38 +8,29 @@ import { Storage } from '@ionic/storage';
 export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
-    private storage: Storage
+    private storageService: StorageService
   ){}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
     let url: string = state.url;
-    console.log('AuthGuard#canactivate');
+    return this.checkLogin(url);
+  }
+
+  canLoad(route: Route): boolean {
+    let url = `${route.path}`;
     return this.checkLogin(url);
   }
 
   checkLogin(url: string): boolean {
-    this.storage.get('token').then(result=>{
-      if(result){
-        this.storage.get('backurl').then(backurl=>{
-          if(backurl){
-            this.router.navigate([backurl])
-            return false;
-          }else{
-            return true;
-          }
-        }).catch(()=>{
-          return true;
-        })
-      }else {
-        this.router.navigate(['/login'])
-        return false;
-      }
-    }, rej=>{
+    let token = this.storageService.getVal('token');
+    if(token){
+      return true;
+    }else{
+      this.storageService.setVal('backurl', url);
       this.router.navigate(['/login'])
       return false;
-    })
-    return true;
+    }
   }
 }

@@ -1,10 +1,17 @@
 {
-  "/api":{
+  "/sso/api":{
     "target":"https://hope.haier.com/hope_sso/api",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin":  "true",
-    "pathRewrite": {"^/api": ""}  
+    "pathRewrite": {"^/sso/api": ""}  
+  },
+  "/agent_web/api":{
+    "target":"https://hope.haier.com/agent_web_test/api",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin":  "true",
+    "pathRewrite": {"^/agent_web/api": ""}  
   }
 
 }

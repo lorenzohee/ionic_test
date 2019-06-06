@@ -1,19 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
 import { User } from '../models/user';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-
-import { config } from '../../environments/config'
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Access-Control-Allow-Origin': 'https://hope.haier.com',
-    'Origin': 'https://hope.haier.com'
-  })
-};
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +14,7 @@ export class UserService {
   ) { }
 
   login(user: User): Observable<any> {
-    return this.http.post<any>(`/api/v1/authen`, user, httpOptions).pipe(
+    return this.http.post<any>(`/sso/api/v1/authen`, user).pipe(
       retry(3),
       catchError(this.handleError)
     )

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, MenuController, ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { UserService } from '../service/user.service';
-import { Storage } from '@ionic/storage';
+import { StorageService } from '../service/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +20,7 @@ export class LoginPage implements OnInit {
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     private formBuilder: FormBuilder,
-    private storage: Storage,
+    private storageService: StorageService,
     private userService: UserService
   ) { }
 
@@ -29,7 +29,16 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-
+    let token = this.storageService.getVal('token');
+    if(token){
+      let backurl = this.storageService.getVal('backurl');
+      if(!backurl){
+        this.storageService.remove('backurl');
+        backurl = '/home'
+      }
+      this.navCtrl.navigateRoot(<string>backurl);
+      return false;
+    }
     this.onLoginForm = this.formBuilder.group({
       'email': [null, Validators.compose([
         Validators.required
@@ -94,18 +103,28 @@ export class LoginPage implements OnInit {
     this.userService.login(this.onLoginForm.value).subscribe(
       result => {
         if(result.token){
-          this.setToken(result.token)
-          this.navCtrl.navigateRoot('/home');
+          this.storageService.setVal('token', result.token);
+          let backurl = this.storageService.getVal('backurl');
+          if(!backurl){
+            this.storageService.remove('backurl');
+            backurl = '/home'
+          }
+          this.navCtrl.navigateRoot(<string>backurl);
+        }else{
+          this.showLoginFailToast(null)
         }
+      },
+      error => {
+        this.showLoginFailToast(error)
       }
     )
   }
 
-  setToken(token: string): Promise<any>{
-    return this.storage.set('token', token)
-  }
-
-  getToken(): Promise<string> {
-    return this.storage.get('token')
+  async showLoginFailToast(str: string){
+    const toast = await this.toastCtrl.create({
+      message: str || '登录失败，请重试',
+      duration: 2000
+    })
+    toast.present()
   }
 }

@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Demand</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-grid fixed>
+      <ion-row class="ion-align-items-stretch">
+        <ion-col size="12" size-md="6" *ngFor="let demand of demands">
+          <ion-card class="demand-card">
+            <ion-card-header>
+              <ion-item detail="false" lines="none">
+                <ion-avatar slot="start">
+                  <img [src]="demand.user_avatar" alt="user avatar">
+                </ion-avatar>
+                <ion-label>
+                  <h2>{{ demand.user_name }}</h2>
+                  <p>{{ demand.deadline }}</p>
+                </ion-label>
+              </ion-item>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-item>
+                {{ demand.content }}
+              </ion-item>
+              <ion-item>
+                <span class="tags">{{ demand.tag }}</span>
+              </ion-item>
+            </ion-card-content>
+
+            <ion-row class="ion-no-padding ion-justify-content-center">
+              <ion-col size="4" class="ion-text-left">
+                <ion-button fill="clear" size="small" color="primary">
+                  <ion-icon name="logo-twitter" slot="start"></ion-icon>
+                  5
+                </ion-button>
+              </ion-col>
+              <ion-col size="4" class="ion-text-center">
+                <ion-button fill="clear" size="small" color="primary">
+                  <ion-icon name="share-alt" slot="start"></ion-icon>
+                  3
+                </ion-button>
+              </ion-col>
+              <ion-col size="4" lass="ion-text-right">
+                <ion-button fill="clear" size="small" color="primary">
+                  <ion-icon name="chatboxes" slot="start"></ion-icon>
+                  4
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+</ion-content>
