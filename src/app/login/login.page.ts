@@ -107,7 +107,7 @@ export class LoginPage implements OnInit {
           let backurl = this.storageService.getVal('backurl');
           if(!backurl){
             this.storageService.remove('backurl');
-            backurl = '/home'
+            backurl = '/tabs/mine'
           }
           this.navCtrl.navigateRoot(<string>backurl);
         }else{

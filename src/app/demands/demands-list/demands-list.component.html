@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Demand</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,43 +14,48 @@
         <ion-col size="12" size-md="6" *ngFor="let demand of demands">
           <ion-card class="demand-card">
             <ion-card-header>
-              <ion-item detail="false" lines="none">
+              <ion-item no-padding detail="false" lines="none">
                 <ion-avatar slot="start">
                   <img [src]="demand.user_avatar" alt="user avatar">
                 </ion-avatar>
                 <ion-label>
                   <h2>{{ demand.user_name }}</h2>
-                  <p>{{ demand.deadline }}</p>
+                  <p>创建于 {{ demand.created_at }}</p>
                 </ion-label>
               </ion-item>
+              <ion-card-title>{{ demand.title }}</ion-card-title>
             </ion-card-header>
 
             <ion-card-content>
-              <ion-item>
-                {{ demand.content }}
-              </ion-item>
-              <ion-item>
-                <span class="tags">{{ demand.tag }}</span>
-              </ion-item>
+              <div [innerHTML]='demand.brief'></div>
+            </ion-card-content>
+
+            <ion-card-content>
+              <ion-chip *ngFor="let tag of demand.tag_list" color="secondary">
+                <ion-label>
+                  <ion-icon name="pin"></ion-icon>
+                  {{ tag }}
+                </ion-label>
+              </ion-chip>
             </ion-card-content>
 
             <ion-row class="ion-no-padding ion-justify-content-center">
               <ion-col size="4" class="ion-text-left">
                 <ion-button fill="clear" size="small" color="primary">
-                  <ion-icon name="logo-twitter" slot="start"></ion-icon>
-                  5
+                  <ion-icon name="eye" slot="start"></ion-icon>
+                  {{ demand.impressionist_count }}
                 </ion-button>
               </ion-col>
               <ion-col size="4" class="ion-text-center">
                 <ion-button fill="clear" size="small" color="primary">
-                  <ion-icon name="share-alt" slot="start"></ion-icon>
-                  3
+                  <ion-icon name="heart" slot="start"></ion-icon>
+                  {{ demand.favorites_count }}
                 </ion-button>
               </ion-col>
-              <ion-col size="4" lass="ion-text-right">
+              <ion-col size="4" class="ion-text-right">
                 <ion-button fill="clear" size="small" color="primary">
                   <ion-icon name="chatboxes" slot="start"></ion-icon>
-                  4
+                  {{ demand.comments.length }}
                 </ion-button>
               </ion-col>
             </ion-row>

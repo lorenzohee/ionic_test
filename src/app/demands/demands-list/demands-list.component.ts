@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DemandService } from 'src/app/service/demand.service';
+import { Demand } from 'src/app/models/demand';
+import { catchError } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-demands-list',
@@ -7,8 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DemandsListComponent implements OnInit {
 
-  constructor() { }
+  demands: Demand[]
 
-  ngOnInit() {}
+  constructor(
+    private demandService: DemandService
+  ) { }
+
+  ngOnInit() {
+    this.demandService.getDemandList().subscribe(
+      res=>{
+        this.demands = res;
+      }
+    )
+  }
 
 }
