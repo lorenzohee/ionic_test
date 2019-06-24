@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule', canActivate: [AuthGuard]  },
   { path: '', redirectTo: 'tabs/mine', pathMatch: 'full' },
 
+
 ];
 
 @NgModule({

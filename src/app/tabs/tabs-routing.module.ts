@@ -15,6 +15,9 @@ const routes: Routes = [{
         }
       ]
     },{
+      path: 'weather',
+      loadChildren: '../weather/weather.module#WeatherPageModule'
+    },{
       path: 'mine',
       loadChildren: '../mine/mine.module#MinePageModule'
     }
