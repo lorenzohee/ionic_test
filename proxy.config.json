@@ -4,14 +4,20 @@
     "secure": false,
     "logLevel": "debug",
     "changeOrigin":  "true",
-    "pathRewrite": {"^/sso/api": ""}  
+    "pathRewrite": {"^/sso/api": ""}
   },
   "/agent_web/api":{
-    "target":"https://hope.haier.com/agent_web_test/api",
+    "target":"https://hope.haier.com/agent_web/api",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin":  "true",
-    "pathRewrite": {"^/agent_web/api": ""}  
+    "pathRewrite": {"^/agent_web/api": ""}
+  },
+  "/python/api":{
+    "target":"http://localhost:8000/api",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin":  "true",
+    "pathRewrite": {"^/python/api": ""}
   }
-
 }
