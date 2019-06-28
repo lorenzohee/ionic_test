@@ -1,2 +1,2 @@
 # ionic_test
-my ionic test
+ionic4 + angular6
