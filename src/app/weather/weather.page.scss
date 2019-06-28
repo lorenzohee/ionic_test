@@ -1,0 +1,59 @@
+.inner-scroll {
+	padding-left: 0;
+	padding-right: 0;
+}
+.weather-page {
+	text-align: center;
+}
+.weather-page-city {
+	font-size: 16px;
+	margin: 10px 0;
+}
+.weather-today {
+	position: absolute;
+  width: 100%;
+  top: 20px;
+}
+.weather-page-temp {
+	display: table;
+	margin: 20px auto;
+	.weather-page-wendu{
+		font-size: 34px;
+		display: table-cell;
+		vertical-align: bottom;
+	}
+	.weather-page-pm {
+		display: table-cell;
+		font-size: 13px;
+		margin-left: 5px;
+		vertical-align: bottom;
+	}
+}
+.weather-page-update-time{
+	font-size: 13px;
+	margin: 20px 0;
+}
+
+.weather-foreast {
+	margin: 10px 0;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	height: 110px;
+	width: 100%;
+	white-space: nowrap;
+	overflow-x: scroll;
+	.weather-item {
+		height: 100%;
+		width: 130px;
+		display: inline-block;
+		text-align: center;
+		.weather-foreast-row{
+			margin: 10px 0;
+		}
+	}
+}
+
+ion-scroll {
+  width: 100%;
+  white-space: nowrap;
+}

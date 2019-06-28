@@ -4,6 +4,38 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  {{ weather }}
+<ion-content no-padding text-center class="animated fadeIn weather-page">
+	<ion-grid no-padding>
+	  <ion-row no-padding>
+	    <ion-col no-padding *ngIf="weather">
+				<ion-img src="/assets/image/weather-sun.jpg"></ion-img>
+				<div no-padding class="weather-today">
+					<i class="fa fa-map-marker" aria-hidden="true"></i>
+					<div class="weather-page-city">
+						{{ weather && weather.cityInfo.city }}
+					</div>
+					<div class="weather-page-temp">
+						<div class="weather-page-wendu">{{ weather && weather.data.wendu }}°</div>
+						<div class="weather-page-pm">
+							{{ weather && weather.data.forecast[0].type }}
+							<br/>
+							PM2.5：{{ weather && weather.data.pm25 }}
+						</div>
+					</div>
+					<div>{{ weather && weather.data.ganmao }}</div>
+					<div class="weather-page-update-time">
+						更新于{{ weather && weather.time }}
+						<i class="fa fa-refresh" aria-hidden="true"></i>
+					</div>
+				</div>
+				<div class="weather-foreast">
+				  <div class="weather-item" *ngFor="let wt of weather.data.forecast">
+				  	<div class="weather-foreast-row">{{ wt.date }}日</div>
+				  	<div class="weather-foreast-row">{{ wt.type }}</div>
+				  	<div class="weather-foreast-row">{{ wt.low }}° - {{ wt.high }}°</div>
+				  </div>
+				</div>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 </ion-content>
