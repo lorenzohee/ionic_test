@@ -8,22 +8,22 @@ export class WebsocketService {
 
   constructor() { }
 
-  private subject: Rx.Subject<MessageEvent>;
+  private subject: Subject<MessageEvent>;
 
-  public connect(url): Rx.Subject<MessageEvent> {
+  public connect(url): Subject<MessageEvent> {
   	if(!this.subject) {
   		this.subject = this.create(url);
   	}
   	return this.subject;
   }
 
-  private create(url): Rx.Subject<MessageEvent> {
+  private create(url): Subject<MessageEvent> {
   	let ws = new WebSocket(url);
 
-  	let observable = Rx.Observable.create((obs: Rx.Observable<MessageEvent>) => {
+  	let observable = Observable.create((obs: Observable<MessageEvent>) => {
   		ws.onmessage = obs.next.bind(obs);
   		ws.onerror = obs.error.bind(obs);
-  		ws.onclose = obs.complete.bin(obs);
+  		ws.onclose = obs.complete.bind(obs);
   		return ws.close.bind(ws);
   	})
 
@@ -34,6 +34,6 @@ export class WebsocketService {
   			}
   		}
   	}
-  	return Rx.Subject.create(observer, observable)
+  	return Subject.create(observer, observable)
   }
 }

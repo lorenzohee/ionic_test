@@ -14,12 +14,13 @@ export class Message {
 })
 export class ChatPage implements OnInit {
 
-	showMessages: Message[]
+	showMessages: Message[] = []
 
   constructor(private chatService: ChatService) {
   	let that = this;
   	chatService.messages.subscribe(msg => {
   		console.log("Response from websocket: " + msg);
+  		msg.author = 'server'
   		that.showMessages.push(msg)
   	})
   }
@@ -34,8 +35,7 @@ export class ChatPage implements OnInit {
 
   sendMsg() {
   	this.chatService.messages.next(this.message);
-  		that.showMessages.push(this.message)
-  	this.message.message = '';
+  	this.showMessages.push(this.message)
   }
 
 }
