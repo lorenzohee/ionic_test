@@ -13,6 +13,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { SharedModule } from './shared';
 import { IonicStorageModule } from '@ionic/storage';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +25,8 @@ import { IonicStorageModule } from '@ionic/storage';
     IonicStorageModule.forRoot(),
 	  AppRoutingModule,
 	  HttpClientModule,
-	  SharedModule],
+	  SharedModule,
+	  ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [
     StatusBar,
     SplashScreen,

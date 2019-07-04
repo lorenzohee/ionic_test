@@ -1,0 +1,10 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-item *ngFor="let message of showMessages">{{message.author}}:{{message.message}}</ion-item>
+<button (click)="sendMsg()">Send Message</button>
+</ion-content>

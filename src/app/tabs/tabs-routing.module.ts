@@ -18,6 +18,9 @@ const routes: Routes = [{
       path: 'weather',
       loadChildren: '../weather/weather.module#WeatherPageModule'
     },{
+      path: 'speakers',
+      loadChildren: '../chat/chat.module#ChatPageModule'
+    },{
       path: 'mine',
       loadChildren: '../mine/mine.module#MinePageModule'
     }
