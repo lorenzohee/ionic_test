@@ -1,0 +1,38 @@
+ion-list {
+  background: #f1f1f1;
+}
+ion-img {
+  background: white;
+}
+.tech-item {
+  overflow: hidden;
+  padding: 10px 0;
+  .item-header {
+    position: relative;
+    .item-tech-tag {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: #235bff;
+      color: white;
+      padding: 3px 10px;
+      font-size: 12px;
+    }
+    .item-title {
+      position: absolute;
+      bottom: 0;
+      padding: 5px 10px;
+      background: #00000099;
+      width: 100%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      color: white;
+    }
+  }
+  .item-brief {
+    font-size: 14px;
+    padding: 10px;
+    color: #9a9a9a;
+    background: white;
+  }
+}

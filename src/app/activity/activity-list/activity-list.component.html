@@ -1,3 +1,21 @@
-<p>
-  activity-list works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>活动</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+  	<div class="tech-item" *ngFor="let techBlog of activities" routerLink='./{{techBlog.id}}'>
+  		<div class="item-header">
+  			<ion-img [src]="techBlog.banner_url" class="item-banner"></ion-img>
+  			<span class="item-tech-tag">新技术</span>
+  			<div class="item-title">{{ techBlog.title }}</div>
+  		</div>
+  		<div class="item-brief">{{ techBlog.brief }}</div>
+  	</div>
+  </ion-list>
+</ion-content>

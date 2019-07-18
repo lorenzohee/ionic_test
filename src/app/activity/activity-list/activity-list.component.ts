@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivityService } from 'src/app/service/activity.service';
+import { Activity } from 'src/app/models/activity';
+import { catchError } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-activity-list',
@@ -7,8 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivityListComponent implements OnInit {
 
-  constructor() { }
+	activities: Activity[]
 
-  ngOnInit() {}
+  constructor(private service: ActivityService) { }
+
+  ngOnInit() {
+  	this.service.getActivities().subscribe(
+  		res=>{
+  			this.activities = res
+  		})
+  }
 
 }

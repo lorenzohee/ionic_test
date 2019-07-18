@@ -24,8 +24,8 @@ const routes: Routes = [{
       path: 'mine',
       loadChildren: '../mine/mine.module#MinePageModule'
     },
-    { path: 'activity', loadChildren: '../activity/activity.module#ActivityPageModule' },
-    { path: 'tech-blog', loadChildren: '../tech-blog/tech-blog.module#TechBlogPageModule' },
+    { path: 'activities', loadChildren: '../activity/activity.module#ActivityPageModule' },
+    { path: 'tech-blogs', loadChildren: '../tech-blog/tech-blog.module#TechBlogPageModule' },
   ]
 }]
 

@@ -11,7 +11,7 @@
   <ion-list>
     <ion-grid fixed>
       <ion-row class="ion-align-items-stretch">
-        <ion-col size="12" size-md="6" *ngFor="let demand of demands">
+        <ion-col routerLink='./{{demand.id}}' size="12" size-md="6" *ngFor="let demand of demands">
           <ion-card class="demand-card">
             <ion-card-header>
               <ion-item no-padding detail="false" lines="none">
@@ -20,7 +20,7 @@
                 </ion-avatar>
                 <ion-label>
                   <h2>{{ demand.user_name }}</h2>
-                  <p>创建于 {{ demand.created_at }}</p>
+                  <p>{{ demand.created_at }}</p>
                 </ion-label>
               </ion-item>
               <ion-card-title>{{ demand.title }}</ion-card-title>
