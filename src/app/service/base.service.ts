@@ -1,20 +1,26 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { StorageService } from './storage.service';
+import { throwError } from 'rxjs';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+export abstract class BaseService {
 
-@Injectable({
-  providedIn: 'root'
-})
-export class BaseService {
-  httpClient: HttpClient;
-  storage: StorageService;
-  constructor() {
-	  let token = this.storage.getVal('token')
-	  httpOptions.headers = httpOptions.headers.set('Authorization', <string>token);
+    constructor() { }
+
+    protected handleError(error: any) {
+
+    var applicationError = error.headers.get('Application-Error');
+
+    // either application-error in header or model error in body
+    if (applicationError) {
+      return throwError(applicationError);
+    }
+
+    var modelStateErrors: string = '';
+
+    // for now just concatenate the error descriptions, alternative we could simply pass the entire error response upstream
+    for (var key in error.error) {
+      if (error.error[key]) modelStateErrors += error.error[key].description + '\n';
+    }
+
+    modelStateErrors = modelStateErrors = '' ? null : modelStateErrors;
+    return throwError(modelStateErrors || 'Server error');
   }
 }

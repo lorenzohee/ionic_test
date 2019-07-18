@@ -9,13 +9,21 @@
 
 <ion-content>
   <ion-list>
-  	<div class="tech-item" *ngFor="let techBlog of activities" routerLink='./{{techBlog.id}}'>
-  		<div class="item-header">
-  			<ion-img [src]="techBlog.banner_url" class="item-banner"></ion-img>
-  			<span class="item-tech-tag">新技术</span>
-  			<div class="item-title">{{ techBlog.title }}</div>
-  		</div>
-  		<div class="item-brief">{{ techBlog.brief }}</div>
-  	</div>
+    <div class="timeline">
+      <div *ngFor="let activity of activities" class="timeline-item">
+      	<span class="timeline-time">07-18</span>
+      	<div class="timeline-body">
+	        <div class="timelin-circle"></div>
+	        <div class="timeline-content" routerLink='./{{activity.id}}'>
+	          <h4>{{ activity.title }}</h4>
+	          <p>{{ activity.brief }}</p>
+	          <div class="timeline-stats">
+	            <i class="fa fa-heart"></i> 已报名
+	            <span class="pos-absolute-right"><i class="fa fa-clock"></i> 2 mins ago</span>
+	          </div>
+	        </div>
+      	</div>
+      </div>
+    </div>
   </ion-list>
 </ion-content>

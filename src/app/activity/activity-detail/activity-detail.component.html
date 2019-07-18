@@ -1,3 +1,21 @@
-<p>
-  activity-detail works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/activities"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ activity && activity.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row class="ion-align-items-stretch">
+      <ion-col>
+				<h1>{{ activity && activity.title }}</h1>
+				<ion-text>
+					<div [innerHTML]='activity && activity.content' class="article-content"></div>
+				</ion-text>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>
