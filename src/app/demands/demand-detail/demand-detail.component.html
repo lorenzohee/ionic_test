@@ -1,12 +1,21 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="demands"></ion-back-button>
+      <ion-back-button defaultHref="/tabs/activities"></ion-back-button>
     </ion-buttons>
-    <ion-title>Demand Detail</ion-title>
+    <ion-title>{{ demand && demand.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-grid fixed>
+    <ion-row class="ion-align-items-stretch">
+      <ion-col>
+				<h1>{{ demand && demand.title }}</h1>
+				<ion-text>
+					<div [innerHTML]='demand && demand.content' class="article-content"></div>
+				</ion-text>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 </ion-content>

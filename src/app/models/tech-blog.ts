@@ -1,3 +1,4 @@
+import { Comment } from './comment'
 export class TechBlog {
 	id: number;
 	title: string;
@@ -8,4 +9,5 @@ export class TechBlog {
 	impressionist_count: number;
 	read: boolean;
 	tag_list: string[];
+	comments: Comment[];
 }

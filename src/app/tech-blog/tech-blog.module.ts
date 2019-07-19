@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { TechBlogPage } from './tech-blog.page';
+import { CommentComponent } from '../shared/comment/comment.component'
 
 import { TechBlogListComponent } from './tech-blog-list/tech-blog-list.component'
 import { TechBlogDetailComponent } from './tech-blog-detail/tech-blog-detail.component'
@@ -33,6 +34,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [TechBlogPage, TechBlogListComponent, TechBlogDetailComponent]
+  declarations: [TechBlogPage, TechBlogListComponent, TechBlogDetailComponent, CommentComponent]
 })
 export class TechBlogPageModule {}

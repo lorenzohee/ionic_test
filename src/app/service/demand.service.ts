@@ -24,4 +24,8 @@ export class DemandService {
   getDemandList(): Observable<Demand[]> {
     return this.httpClient.get<Demand[]>(`/agent_web/api/v1/demands`, httpOptions);
   }
+
+  getDemandById(id: number): Observable<Demand> {
+    return this.httpClient.get<Demand>(`/agent_web/api/v1/demands/${id}`, httpOptions);
+  }
 }

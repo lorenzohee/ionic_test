@@ -15,6 +15,7 @@
 				<ion-text>
 					<div [innerHTML]='techBlog && techBlog.content'></div>
 				</ion-text>
+        <app-comment [comments]="techBlog && techBlog.comments" articleType="TechBlog" [articleId]="techBlog && techBlog.id"></app-comment>
 			</ion-col>
 		</ion-row>
 	</ion-grid>

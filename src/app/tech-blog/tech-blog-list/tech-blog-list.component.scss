@@ -9,6 +9,8 @@ ion-img {
   padding: 10px 0;
   .item-header {
     position: relative;
+    min-height: 200px;
+    background: white;
     .item-tech-tag {
       position: absolute;
       top: 0;
