@@ -7,7 +7,7 @@ import { Comment } from '../../models/comment'
   styleUrls: ['./comment.component.scss'],
 })
 export class CommentComponent implements OnInit {
-
+	newComment = new Comment()
 	@Input('comments')
 	comments: Comment[];
 
@@ -17,8 +17,14 @@ export class CommentComponent implements OnInit {
 	@Input('articleId')
 	articleId: number;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {}
 
+  processForm() {
+  	this.newComment.commentable_id = this.articleId;
+  	this.newComment.commentable_type = this.type
+  	console.log(this.newComment)
+  }
 }

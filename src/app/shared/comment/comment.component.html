@@ -15,11 +15,13 @@
   </ion-item>
 </ion-list>
 
-<div style="display: flex; position: fixed; bottom: 0;width: 100%; background: white;">
-  <ion-input [(ngModel)]="newmessage" placeholder="Write your message ..." style=""></ion-input>
-  <ion-buttons end>
-    <button ion-button (click)="addgroupmsg()" style="background: white; font-size: 26px;margin-right: 15px;">
-      <ion-icon name="send" color="primary"></ion-icon>
-    </button>
-  </ion-buttons>
+<div>
+  <form (ngSubmit)="processForm()" style="display: flex; position: fixed; bottom: 0;width: 100%; background: white;">
+    <ion-input [(ngModel)]="newComment.message" name="message" placeholder="Write your message ..." style=""></ion-input>
+    <ion-buttons end>
+      <button ion-button type="submit" style="background: white; font-size: 26px;margin-right: 15px;">
+        <ion-icon name="send" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+  </form>
 </div>

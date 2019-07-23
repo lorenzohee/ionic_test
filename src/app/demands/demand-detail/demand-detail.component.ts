@@ -24,5 +24,4 @@ export class DemandDetailComponent implements OnInit {
   			this.demand = res
   		})
   }
-
 }
