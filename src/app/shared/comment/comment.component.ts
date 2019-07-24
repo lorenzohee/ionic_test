@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Comment } from '../../models/comment'
+import { CommentService } from '../../service/comment.service'
 
 @Component({
   selector: 'app-comment',
@@ -17,7 +18,7 @@ export class CommentComponent implements OnInit {
 	@Input('articleId')
 	articleId: number;
 
-  constructor() {
+  constructor(private service: CommentService) {
   }
 
   ngOnInit() {}
@@ -25,6 +26,9 @@ export class CommentComponent implements OnInit {
   processForm() {
   	this.newComment.commentable_id = this.articleId;
   	this.newComment.commentable_type = this.type
-  	console.log(this.newComment)
+  	this.service.createComment(this.newComment).subscribe(res=>{
+  		this.comments.splice(0,0, res);
+  		this.newComment.message = ''
+  	})
   }
 }

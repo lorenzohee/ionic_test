@@ -1,6 +1,6 @@
 <ion-list no-lines>
   <ion-list-header>
-    最新评论({{ comments && comments.length}})
+    最新评论({{ (comments && comments.length) || 0 }})
   </ion-list-header>
 
   <ion-item *ngFor="let comment of comments" text-wrap>
