@@ -12,6 +12,13 @@
     <ion-row class="ion-align-items-stretch">
       <ion-col>
 				<h1>{{ techBlog && techBlog.title }}</h1>
+        <div class='article_header'>
+          <div class='text-grey'>发布于：  {{ techBlog && techBlog.created_at}}</div>
+          <div class='user_linke'>
+            <ion-icon name="heart" *ngIf='techBlog && techBlog.favorite_id!=null' (click)='unstarDemand()'></ion-icon>
+            <ion-icon name="heart-empty" *ngIf='techBlog && techBlog.favorite_id==null' (click)='starDemand()'></ion-icon>
+          </div>
+        </div>
 				<ion-text>
 					<div [innerHTML]='techBlog && techBlog.content'></div>
 				</ion-text>

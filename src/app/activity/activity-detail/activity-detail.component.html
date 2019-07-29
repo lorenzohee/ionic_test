@@ -15,7 +15,7 @@
 				<ion-text>
 					<div [innerHTML]='activity && activity.content' class="article-content"></div>
 				</ion-text>
-        <app-comment [comments]="techBlog && techBlog.comments" articleType="TechBlog" [articleId]="techBlog && techBlog.id"></app-comment>
+        <app-comment [comments]="activity && activity.comments" articleType="Activity" [articleId]="activity && activity.id"></app-comment>
 			</ion-col>
 		</ion-row>
 	</ion-grid>

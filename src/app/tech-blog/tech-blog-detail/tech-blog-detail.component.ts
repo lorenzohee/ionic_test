@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TechBlogService } from 'src/app/service/tech-blog.service';
 import { TechBlog } from 'src/app/models/tech-blog';
+import { FavoriteService } from '../../service/favorite.service'
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
@@ -15,7 +16,8 @@ export class TechBlogDetailComponent implements OnInit {
   constructor(
 	  private route: ActivatedRoute,
 	  private router: Router,
-	  private service: TechBlogService) { }
+	  private service: TechBlogService,
+    private favoriteService: FavoriteService) { }
 
   ngOnInit() {
   	let id = this.route.snapshot.paramMap.get('id');
@@ -26,4 +28,15 @@ export class TechBlogDetailComponent implements OnInit {
   	)
   }
 
+  starDemand() {
+    this.favoriteService.starArticle(this.techBlog.id, 'TechBlog').subscribe(res=>{
+      this.techBlog.favorite_id = res.id
+    })
+  }
+
+  unstarDemand() {
+    this.favoriteService.unStarArticle(this.techBlog.favorite_id).subscribe(res=>{
+      this.techBlog.favorite_id = null;
+    })
+  }
 }

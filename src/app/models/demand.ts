@@ -1,5 +1,6 @@
+import { Comment } from './comment'
 export class Demand {
-    id: string;
+    id: number;
     title: string;
     brief: string;
     created_at: string;
@@ -9,4 +10,6 @@ export class Demand {
     tag_list: string[];
     impressionist_count: number;
     favorites_count: number;
+    comments: Comment[];
+    favorite_id: number;
 }

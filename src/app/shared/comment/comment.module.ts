@@ -6,6 +6,7 @@ import { CommentComponent } from './comment.component'
   declarations: [CommentComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [ ]
 })
 export class CommentModule { }

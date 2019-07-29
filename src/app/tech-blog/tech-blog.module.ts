@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import { SharedModule } from '../shared/shared.module'
 
 import { TechBlogPage } from './tech-blog.page';
-import { CommentComponent } from '../shared/comment/comment.component'
 
 import { TechBlogListComponent } from './tech-blog-list/tech-blog-list.component'
 import { TechBlogDetailComponent } from './tech-blog-detail/tech-blog-detail.component'
@@ -29,11 +26,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
+    SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [TechBlogPage, TechBlogListComponent, TechBlogDetailComponent, CommentComponent]
+  declarations: [TechBlogPage, TechBlogListComponent, TechBlogDetailComponent]
 })
 export class TechBlogPageModule {}

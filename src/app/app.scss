@@ -5,3 +5,21 @@
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application.
 @import '~font-awesome/css/font-awesome.css';
+
+.article_header {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  .text-grey {
+  	display: inline-block;
+	  font-size: 13px;
+		color: #999;
+  }
+  .user_linke {
+  	float: right;
+    font-size: 22px;
+    vertical-align: top;
+    margin-right: 10px;
+    color: #f14949;
+  }
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../service/user.service'
 
 @Component({
   selector: 'app-mine',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MinePage implements OnInit {
 
-  constructor() { }
+  constructor(
+  	private service: UserService) { }
 
   ngOnInit() {
+  	this.getCurrentUser();
+  }
+
+  getCurrentUser() {
+  	this.service.getCurrentUser().subscribe(res=>{
+  		this.user = res
+  	})
   }
 
 }

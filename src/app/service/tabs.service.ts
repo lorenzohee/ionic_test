@@ -14,7 +14,8 @@ export class TabsService {
   routeParamPages: string[] = [
     'demands',
     'activities',
-    'tech-blogs'
+    'tech-blogs',
+    'mine'
   ];
   constructor(private router: Router, private platform: Platform) {
     this.platform.ready().then(() => {

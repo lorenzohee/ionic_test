@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/activities"></ion-back-button>
+      <ion-back-button defaultHref="/tabs/demands"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ demand && demand.title }}</ion-title>
   </ion-toolbar>
@@ -12,10 +12,17 @@
     <ion-row class="ion-align-items-stretch">
       <ion-col>
 				<h1>{{ demand && demand.title }}</h1>
+        <div class='article_header'>
+          <div class='text-grey'>发布人：{{ demand && demand.user_name}}  截止日期：  {{ demand && demand.deadline}}</div>
+          <div class='user_linke'>
+            <ion-icon name="heart" *ngIf='demand && demand.favorite_id!=null' (click)='unstarDemand()'></ion-icon>
+            <ion-icon name="heart-empty" *ngIf='demand && demand.favorite_id==null' (click)='starDemand()'></ion-icon>
+          </div>
+        </div>
 				<ion-text>
 					<div [innerHTML]='demand && demand.content' class="article-content"></div>
 				</ion-text>
-        <app-comment [comments]="techBlog && techBlog.comments" articleType="TechBlog" [articleId]="techBlog && techBlog.id"></app-comment>
+        <app-comment [comments]="demand && demand.comments" articleType="Demand" [articleId]="demand && demand.id"></app-comment>
 			</ion-col>
 		</ion-row>
 	</ion-grid>

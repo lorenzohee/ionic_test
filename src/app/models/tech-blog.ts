@@ -10,4 +10,5 @@ export class TechBlog {
 	read: boolean;
 	tag_list: string[];
 	comments: Comment[];
+	favorite_id: number;
 }
