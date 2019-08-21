@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user.service'
+import { User } from '../models/user'
 
 @Component({
   selector: 'app-mine',
@@ -7,6 +8,8 @@ import { UserService } from '../service/user.service'
   styleUrls: ['./mine.page.scss'],
 })
 export class MinePage implements OnInit {
+
+  user: User;
 
   constructor(
   	private service: UserService) { }

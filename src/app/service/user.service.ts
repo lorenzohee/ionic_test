@@ -36,6 +36,15 @@ export class UserService {
     )
   }
 
+  updateUserInfo(userInfo: User): Observable<User> {
+    let token = this.storage.getVal('token')
+    httpOptions.headers = httpOptions.headers.set('Authorization', <string>token);
+    return this.http.put<User>(`/sso/api/v1/users/update_profile`, userInfo.sso_user, httpOptions).pipe(
+      retry(3),
+      catchError(this.handleError)
+    )
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

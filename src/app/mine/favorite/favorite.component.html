@@ -1,17 +1,23 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/mine"></ion-back-button>
+      <ion-back-button defaultHref="/tabs/mine" text=''></ion-back-button>
     </ion-buttons>
     <ion-title>我的关注</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid fixed>
-    <ion-row class="ion-align-items-stretch">
-      <ion-col>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
+  <ion-list *ngIf="favorites">
+    <ion-item *ngFor="let favorite of favorites">
+      <ion-label *ngIf="favorite.favoritable_type=='Demand'" routerLink='../../demands/{{favorite.favoritable.demand.id}}'>
+        <h2><ion-badge color="secondary">需求</ion-badge>{{ favorite.favoritable.demand.title }}</h2>
+        <p>{{ favorite.favoritable.demand.brief }}</p>
+      </ion-label>
+      <ion-label *ngIf="favorite.favoritable_type=='TechBlog'" routerLink='../../tech-blogs/{{favorite.favoritable.tech_blog.id}}'>
+        <h2><ion-badge color="secondary">加速器</ion-badge>{{ favorite.favoritable.tech_blog.title }}</h2>
+        <p>{{ favorite.favoritable.tech_blog.brief }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

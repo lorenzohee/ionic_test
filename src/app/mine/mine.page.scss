@@ -1,3 +1,20 @@
 ion-label {
     font-size: 14px !important;
 }
+
+.mine_header {
+	position: relative;
+	.mine_info{
+		position: absolute;
+		width: 100%;
+		text-align: center;
+		top: 60px;
+		color: white;
+		img.mine_avatar{
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			margin-bottom: 15px;
+		}
+	}
+}

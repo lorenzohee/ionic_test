@@ -12,4 +12,5 @@ export class Demand {
     favorites_count: number;
     comments: Comment[];
     favorite_id: number;
+    deadline: string;
 }

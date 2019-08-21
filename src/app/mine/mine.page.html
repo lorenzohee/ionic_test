@@ -1,5 +1,11 @@
 <ion-content>
-  <ion-img src="/assets/image/img_01.jpg"></ion-img>
+  <div class="mine_header">
+    <ion-img src="/assets/image/img_01.jpg" class="mine_bg"></ion-img>
+    <div class="mine_info">
+      <img src="{{ user && user.sso_user.avatar_url }}" class="mine_avatar" *ngIf="user != null">
+      <div>{{ user && user.sso_user.nickname }}</div>
+    </div>
+  </div>
   <ion-list>
     <ion-item detail routerLink='./personal-edit'>
       <ion-icon name="contact" color="primary" slot="start"></ion-icon>

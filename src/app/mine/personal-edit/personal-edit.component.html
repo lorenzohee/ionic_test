@@ -8,10 +8,41 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid fixed>
-    <ion-row class="ion-align-items-stretch">
-      <ion-col>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
+  <form [formGroup]="personalForm" (ngSubmit)="onSubmit()">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding" formGroupName="sso_user">
+      <ion-item>
+        <ion-label position="stacked">昵称 <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required type="text" formControlName="nickname"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">真实姓名 <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required type="text" formControlName="real_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">手机号码 <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required type="number" formControlName="mobile"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">组织 <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required type="text" formControlName="organization"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">部门 <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required type="text" formControlName="department"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">职位 <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required type="text" formControlName="position"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-padding">
+      <ion-button expand="block" type="submit" class="ion-no-margin" [disabled]="!personalForm.valid">修改个人信息</ion-button>
+    </div>
+  </form>
 </ion-content>
