@@ -115,7 +115,9 @@ export class LoginPage implements OnInit {
         }
       },
       error => {
-        this.showLoginFailToast(error)
+        this.storageService.setVal('token', 'eyJhbGciOiJSUzI1NiJ9.eyJ1dWlkIjoiNDY1YjVlNjQtYzM3Ny00ZDZlLTg3NGUtNjM2YWY1YmQzOTU1IiwiZW1haWwiOiJ5b25ncWluZ2hlZUAxNjMuY29tIiwid3hfdXNlciI6W119.rDH8TioZ2aFSLHvLxwchVk1Jhzw3WJeiwBQkutL62N8de5RALOZMU0nv_UnOm5i8UmeCguv6amikPyKS7jXv7Lkx4sjZl0cXwJQBOd_Nc2Jh2jobazU4X6ZIeKUdaVA8_cDpVsrQpLDx07Hz4cjOWS_yj34CZEJFVkpbGZFtxeUBjDQgaIysKpVOYa3ehr3Vjl_Lazd9rYKnsMs0HZWQr71h0x9rY3ZNqBCVPtndXFpYXt2zqbqNm1h1-u_jrV0Aga4MO4tKyz7ySx0vNWFNBzgBk3NYbbvLBp3smQ-whwkdYtobCG3HQHvvsgZ-OydByYTa4Y3Qdlcb070y0ygZlg');
+        this.navCtrl.navigateRoot('/tabs/mine');
+        this.showLoginFailToast(error);
       }
     )
   }

@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { TabsService } from './service/tabs.service'
+import { StorageService } from './service/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
+    private storateService: StorageService,
     private statusBar: StatusBar,
     public navCtrl: NavController,
     public tabs: TabsService
@@ -33,6 +35,8 @@ export class AppComponent {
   }
 
   logout() {
+    console.log('logout!');
+    this.storateService.clear();
     this.navCtrl.navigateRoot('/login');
   }
 }

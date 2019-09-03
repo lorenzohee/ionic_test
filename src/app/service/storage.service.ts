@@ -27,7 +27,7 @@ export class StorageService {
   }
 
   clear() {
-    sessionStorage.clear();
+    localStorage.clear();
   }
 
 }
